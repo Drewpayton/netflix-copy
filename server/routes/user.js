@@ -5,10 +5,6 @@ const { authMiddleware } = require("../utils/auth");
 // UPDATE
 router.put("/:id", authMiddleware, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
-    // if (req.body.password) {
-    //   req.body.password = hashedPasword;
-    // }
-
     try {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
@@ -53,11 +49,11 @@ router.get("/find/:id", async (req, res) => {
 });
 
 // GET ALL USERS
-router.delete("/", authMiddleware, async (req, res) => {
+router.get("/", authMiddleware, async (req, res) => {
   const query = req.query.new;
   if (req.user.isAdmin) {
     try {
-      const users = query ? await User.find().limit(10) : await User.find(10);
+      const users = await User.find({});
       res.status(200).json(users);
     } catch (err) {
       res.status(401).json(err);
@@ -66,5 +62,7 @@ router.delete("/", authMiddleware, async (req, res) => {
     res.status(403).json({ msg: "You are not allowed to see all users!" });
   }
 });
+
+
 
 module.exports = router;
