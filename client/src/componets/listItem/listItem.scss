@@ -1,38 +1,81 @@
 .listItem {
-    width: 225px;
-    height: 120px;
-    background-color: var(--main-color);
-    margin-right: 5px;
-    color: white;
-    overflow: hidden;
-    cursor: pointer;
+font-family:Georgia, 'Times New Roman', Times, serif;
+  width: 225px;
+  height: 120px;
+  background-color: var(--main-color);
+  margin-right: 5px;
+  color: white;
+  overflow: hidden;
+  cursor: pointer;
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  video {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    position: absolute;
+  }
+  &:hover {
+    padding: 5px;
+    width: 325px;
+    height: 300px;
+    top: -150px;
+    position: absolute;
+    border-radius: 5px;
+    z-index: 99;
+    background-color: rgb(70, 45, 0);
 
     img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      height: 140px;
+      z-index: 99;
     }
-    
- video {
-     width: 100%;
-     height: 140px;
-     object-fit: cover;
-     position: absolute;
- }
-    &:hover {
-        padding: 5px;
-        width: 325px;
-        height: 300px;
-        top: -150px;
-        position: absolute;
-        border-radius: 5px;
-            z-index: 99;
-            background-color: rgb(70, 45, 0);
+    .itemInfo {
+      display: flex;
+      flex-direction: column;
+      padding: 5;
+    }
 
-        img {
-            height: 140px;
-            z-index: 99;
-        }
+    .icons {
+      display: flex;
+      margin-bottom: 10px;
+
+      .icon {
+        border: 2px solid white;
+        padding: 5px;
+        border-radius: 50%;
+        margin-right: 10px;
+        font-size: 16px;
+      }
     }
+
+    .itemInfoTop {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: grey;
+
+      .limit {
+        border: 1px solid grey;
+        padding: 1px 3px;
+        margin: 0px 10px;
+      }
+    }
+
+    .desc {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .genre {
+        font-size: 14px;
+        color: lightgrey;
+    }
+  }
 }
