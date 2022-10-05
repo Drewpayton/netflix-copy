@@ -8,10 +8,14 @@ import { useState } from "react";
 
 const ListItem = ({index}) => {
   const [isHovered, setIsHovered] = useState(false)
+  const trailer = ""
 
   return (
     <div className="listItem" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} style={{left: isHovered && index * 225 - 50}}>
       <img src={mowgli} alt="Mowgli" />
+      {isHovered && (
+        <>
+      <video src={trailer} autoPlay={true} loop></video>
       <div className="itemInfo">
         <div className="icons">
             <PlayArrowIcon />
@@ -27,7 +31,11 @@ const ListItem = ({index}) => {
         <div className="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
       </div>
       <div className="genre">Family</div>
+      </>
+      )}
     </div>
+      
+    
   );
 };
 
