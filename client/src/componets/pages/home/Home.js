@@ -3,11 +3,11 @@ import Navbar from "../../navbar/Navbar";
 import Featured from "../../navbar/featured/Featured";
 import List from "../../list/List";
 
-export default function Home() {
+export default function Home({ type }) {
   return (
     <div className="home">
       <Navbar />
-      <Featured />
+      <Featured type={type} />
       <List />
       <List />
       <List />
