@@ -1,14 +1,22 @@
 import "./watch.scss";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useLocation } from "react";
+import { Link } from "react-router-dom";
 
 const Watch = () => {
-  return <div className="watch">
-    <div className="back">
-        <ArrowBackIcon />
-        Home
+  const location = useLocation();
+  const movie = location.movie;
+  return (
+    <div className="watch">
+      <Link to="/">
+        <div className="back">
+          <ArrowBackIcon />
+          Home
+        </div>
+      </Link>
+      <video className="video" autoPlay progress controls src={movie}></video>
     </div>
-    <video className="video" autoPlay progress controls src=""></video>
-  </div>;
+  );
 };
 
 export default Watch;

@@ -13,7 +13,14 @@ export default function Home({ type }) {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}&${genre ? "genre=" + genre : ""}`
+          `lists${type ? "?type=" + type : ""}&${
+            genre ? "genre=" + genre : ""
+          }`,
+          {
+            headers: {
+              token: "Bearer ",
+            },
+          }
         );
         console.log(res);
         // setLists(res.data);
@@ -29,13 +36,9 @@ export default function Home({ type }) {
     <div className="home">
       <Navbar />
       <Featured type={type} />
-      <List />
-      <List />
-      <List />
-      <List />
-      <List />
-      <List />
-      <List />
+      {lists.map((list) => {
+        <List list={list} />;
+      })}
     </div>
   );
 }

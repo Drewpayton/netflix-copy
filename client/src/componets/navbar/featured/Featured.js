@@ -3,8 +3,24 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import "./featured.scss";
 import darkknight from "../../../assets/darkknightbackground.jpg";
 import darkknighttitile from "../../../assets/darkknighttitle.png";
+import axios from "axios";
 
 const Featured = ({ type }) => {
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const res = await axios.get(`/movies/random?type=${type}`);
+        setContent = res.data;
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getRandomContent();
+  }, [type]);
+
   return (
     <div className="featured">
       {type && (
@@ -28,7 +44,7 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img src={darkknight}></img>
+      <img src={content.img}></img>
       <div className="info">
         <img src={darkknighttitile}></img>
         <span className="desc">
